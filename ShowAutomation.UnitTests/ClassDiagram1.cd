@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ShowAutomation.Domain.Models.Project" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Commands.Tests.VideoCommandTests" Collapsed="true">
+    <Position X="28" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAA=</HashCode>
+      <FileName>Domain\Models\Commands\VideoCommandTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Media.Tests.MediaManagerTests" Collapsed="true">
+    <Position X="28" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAEAAAAAAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\Media\MediaPlayer\MediaManagerTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Media.MediaPlayer.Tests.MediaPlayerCommandTests" Collapsed="true">
+    <Position X="17.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQIA=</HashCode>
+      <FileName>Domain\Models\Media\MediaPlayer\MediaPlayerCommandTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.OutputDevices.Tests.AudioDeviceTests" Collapsed="true">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\OutputDevices\AudioDeviceTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.OutputDevices.Tests.LaneOutputTests" Collapsed="true">
+    <Position X="15.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAIgAAAAAAAAAAAAAQAAAQAAAA=</HashCode>
+      <FileName>Domain\Models\OutputDevices\LaneOutputTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.OutputDevices.Tests.VideoDeviceTests" Collapsed="true">
+    <Position X="15.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAIADAAA=</HashCode>
+      <FileName>Domain\Models\OutputDevices\VideoDeviceTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Scenes.Tests.SceneTests" Collapsed="true">
+    <Position X="17.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAQAAAQAACUAAAAIAAAAhAAAAAAACAAIAAAAAAAQA=</HashCode>
+      <FileName>Domain\Models\Scenes\SceneTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.App" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.UI.Views.Tests.CreateGhostOutputWindowTests" Collapsed="true">
+    <Position X="26.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CreateGhostOutputWindowTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UI.Views.Tests.MissingFilesWindowTests" Collapsed="true">
+    <Position X="28" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>MissingFilesWindowTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UnitTests.Domain.Models.Commands.MidiCommandTest" Collapsed="true">
+    <Position X="21" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAABAAAAAAAAAAAAAAQAAAAAAQAQAAA=</HashCode>
+      <FileName>Domain\Models\Commands\MidiCommandTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UnitTests.Domain.Models.Commands.MusicCommandTest" Collapsed="true">
+    <Position X="19.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAIAAAAAACAAAAEAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Domain\Models\Commands\MusicCommandTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UnitTests.Domain.Models.Commands.VideoCommandTest" Collapsed="true">
+    <Position X="26.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\Commands\VideoCommandTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UnitTests.Domain.Models.Events.EventTests" Collapsed="true">
+    <Position X="17.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\Events\EventTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UnitTests.Domain.Models.Media.MediaPlayer.MediaPlayerTests" Collapsed="true">
+    <Position X="19.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\Media\MediaPlayer\MediaPlayerTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UnitTests.Domain.Models.Media.UnitTest1" Collapsed="true">
+    <Position X="24.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ZAAQAAAAAAAAAAAAAIABAAgAAACAAAAAAQAAACAAIAA=</HashCode>
+      <FileName>Domain\Models\Media\SongTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UnitTests.Domain.Models.Media.VideoTest" Collapsed="true">
+    <Position X="19.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAEAAAAAAAAAACAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\Media\VideoTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.Tests.GhostOutputTest" Collapsed="true">
+    <Position X="21" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAEAIAAgAAAAAAACAAAAAAAAAAACAAAAACAEAEAA=</HashCode>
+      <FileName>Domain\Models\OutputDevices\GhostOutputTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.Tests.MainWindowTests" Collapsed="true">
+    <Position X="19.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAIAAAAAAAAAAAAAAAAAAAICAAAAAAAAAAQA=</HashCode>
+      <FileName>MainWindowTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.Domain.Utils.Tests.MidiDeviceTest" Collapsed="true">
+    <Position X="24.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAgACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\OutputDevices\MidiDeviceTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UnitTests.Domain.OutputDevices.OutputDeviceTests" Collapsed="true">
+    <Position X="21" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEICAACEEAQAAAAAAAAAIAAAAAAAAACACAA=</HashCode>
+      <FileName>Domain\OutputDevices\OutputDeviceTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UnitTests.Domain.Utils.BehringerX32MidiValuesTest" Collapsed="true">
+    <Position X="19.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Utils\BehringerX32MidiValuesTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UnitTests.Domain.Utils.ColorManagerTests" Collapsed="true">
+    <Position X="24.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQCAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Domain\Utils\ColorManagerTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UnitTests.Domain.Utils.ColorManagerTests1" Collapsed="true">
+    <Position X="26.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Utils\ColorManagerTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UnitTests.Domain.Utils.ModeTest" Collapsed="true">
+    <Position X="17.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAACAAAAABAIAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Domain\Utils\ModeTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UnitTests.Domain.Utils.Tests.BehringerXAirMidiValuesTest" Collapsed="true">
+    <Position X="21" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Utils\BehringerXAirMidiValuesTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UI.ViewModels.Commands.Tests.CommandListTests">
+    <Position X="17.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\ViewModels\Commands\CommandListTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UI.ViewModels.Media.Tests.SongWaveformGeneratorTests" Collapsed="true">
+    <Position X="21" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAIAAAAAAAEAAAA=</HashCode>
+      <FileName>UI\ViewModels\Media\SongWaveformGeneratorTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.UI.ViewModels.Scenes.Tests.SceneListTests" Collapsed="true">
+    <Position X="15.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAEQAAAgAAAAACAAgAAAAAAAQQAACAAAAABMAAAA=</HashCode>
+      <FileName>UI\ViewModels\Scenes\SceneListTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Commands.AbstractCommand" Collapsed="true">
+    <Position X="11" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Commands.JsonCommand" Collapsed="true">
+    <Position X="3" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Commands.MidiCommand" Collapsed="true">
+    <Position X="8.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Commands.JsonMidiCommand" Collapsed="true">
+    <Position X="0.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Commands.MusicCommand" Collapsed="true">
+    <Position X="11" Y="10.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Commands.JsonMusicCommand" Collapsed="true">
+    <Position X="3" Y="10.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Commands.VideoCommand" Collapsed="true">
+    <Position X="13.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Commands.JsonVideoCommand" Collapsed="true">
+    <Position X="5.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Media.MediaManager" Collapsed="true">
+    <Position X="26.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Media.MediaModel" Collapsed="true">
+    <Position X="6.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Media.Song" Collapsed="true">
+    <Position X="5.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Media.Video" Collapsed="true">
+    <Position X="7.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Events.Event" Collapsed="true">
+    <Position X="11" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Events.JsonEvent" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Events.EventGroup" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Events.MidiEvent" Collapsed="true">
+    <Position X="8.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Events.JsonMidiEvent" Collapsed="true">
+    <Position X="8.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Events.MusicEvent" Collapsed="true">
+    <Position X="11" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Events.JsonMusicEvent" Collapsed="true">
+    <Position X="11" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Events.VideoEvent" Collapsed="true">
+    <Position X="13.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Events.JsonVideoEvent" Collapsed="true">
+    <Position X="13.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Media.MediaPlayer.MediaPlayer" Collapsed="true">
+    <Position X="3" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Media.MediaPlayer.AudioPlayer" Collapsed="true">
+    <Position X="5.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Media.MediaPlayer.MediaPlayerCommand" Collapsed="true">
+    <Position X="15.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Media.MediaPlayer.MidiPlayer" Collapsed="true">
+    <Position X="0.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Media.MediaPlayer.VideoPlayer" Collapsed="true">
+    <Position X="3" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.OutputDevices.AudioDevice" Collapsed="true">
+    <Position X="3.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.OutputDevices.JsonAudioDevice" Collapsed="true">
+    <Position X="3" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.OutputDevices.DuplicateDevice" Collapsed="true">
+    <Position X="5.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.OutputDevices.GhostOutput" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.OutputDevices.MidiDevice" Collapsed="true">
+    <Position X="10" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.OutputDevices.JsonMidiDevice" Collapsed="true">
+    <Position X="5.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.OutputDevices.OutputDevice" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.OutputDevices.JsonOutputDevice" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.OutputDevices.VideoDevice" Collapsed="true">
+    <Position X="12.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.OutputDevices.JsonVideoDevice" Collapsed="true">
+    <Position X="0.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.OutputDevices.LaneOutput" Collapsed="true">
+    <Position X="1" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Scenes.Scene" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Models.Scenes.JsonScene" Collapsed="true">
+    <Position X="26.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Utils.ColorManager" Collapsed="true">
+    <Position X="22.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Utils.Mode" Collapsed="true">
+    <Position X="15.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Utils.ConsoleManager" Collapsed="true">
+    <Position X="19.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Utils.Types" Collapsed="true">
+    <Position X="22.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Utils.Midi.BehringerX32MidiValues" Collapsed="true">
+    <Position X="0.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Utils.Midi.BehringerXAirMidiValues" Collapsed="true">
+    <Position X="2.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Utils.Midi.MidiDeviceManager" Collapsed="true">
+    <Position X="22.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.Domain.Utils.Midi.MidiValues" Collapsed="true">
+    <Position X="1.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.UI.ViewModels.Commands.CommandListFilter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.UI.ViewModels.Commands.CommandList" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.UI.ViewModels.Commands.JsonCommandList" Collapsed="true">
+    <Position X="24.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.UI.ViewModels.Media.SongWaveformGenerator" Collapsed="true">
+    <Position X="19.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.UI.ViewModels.OutputDevices.OutputManager" Collapsed="true">
+    <Position X="22.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.UI.ViewModels.Scenes.SceneList" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.UI.ViewModels.Scenes.JsonSceneList" Collapsed="true">
+    <Position X="28" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="XamlGeneratedNamespace.GeneratedInternalTypeHelper" Collapsed="true">
+    <Position X="19.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ShowAutomation.UI.Views.CreateCommandWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.UI.Views.CreateEventWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.UI.Views.CreateGhostOutputWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.UI.Views.CreateSceneWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.UI.Views.HelpGuideWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.UI.Views.ManageOutputsWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.UI.Views.MapToNewDeviceWindow" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.UI.Views.MapDevicesWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.UI.Views.MissingFilesWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShowAutomation.UI.Views.VideoPanel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

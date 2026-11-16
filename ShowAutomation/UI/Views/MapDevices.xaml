@@ -1,0 +1,84 @@
+﻿<Window x:Class="ShowAutomation.UI.Views.MapDevicesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShowAutomation.UI.Views"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+
+        Title="MapDevices" Height="550" Width="500">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- DEVICES -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="   Device Not Found: "/>
+            </Grid>
+            
+            <!-- BIND DEVICE NAME-->
+            <Grid Grid.Row="1">
+                <TextBlock x:Name="textBox" VerticalAlignment="Center" HorizontalAlignment="Center" Text=" "  Width="105" Margin="10,0,85,7"/>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="   Available Devices: "/>
+            </Grid>
+            
+            <!-- BIND AVAILABLE DEVICES-->
+            <Grid Grid.Row="3">
+                <ListView Margin="10" Name="devicesToMapListView" SelectionChanged="devicesToMapListView_SelectionChanged" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <TextBlock Text="{Binding deviceName}" />
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </Grid>
+        </Grid>
+        
+        <!-- BUTTONS -->
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1">
+                <Button x:Name="ghostPortBtn" Click="ghostPortBtn_Click" Content="Ghost" Height="30" Width="85"/>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Button IsDefault="True" x:Name="assignBtn" Click="assignBtn_Click" Content="Assign Device" Height="30" Width="85"/>
+            </Grid>
+
+            <Grid Grid.Row="5">
+                <Button x:Name="cancelBtn" Click="CancelBtn_Click" Content="Cancel" Height="30" Width="85" IsCancel="True"/>
+            </Grid>
+        </Grid>
+        
+    </Grid>
+</Window>

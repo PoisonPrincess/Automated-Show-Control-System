@@ -1,0 +1,139 @@
+﻿<Window x:Class="ShowAutomation.UI.Views.SceneFadeSettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShowAutomation.UI.Views"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Scene Fade Settings" Height="300" Width="310">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="290"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="0"/>
+                <ColumnDefinition Width="27"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="27"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="27"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Fade Duration: " Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtHours"  ToolTip="Hours" MaxLength="2" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="0" VerticalAlignment="Center" Width="22" Grid.Column="2"/>
+            <Label x:Name="lblTimeDivider" Content=":" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Height="27" Width="14" Grid.Column="3"/>
+            <TextBox x:Name="txtMinutes" ToolTip="Minutes" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="0" VerticalAlignment="Center" Width="22"  MaxLength="2" Grid.Column="4"/>
+            <Label x:Name="lblTimeDivider_Copy" Content=":" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="27" Width="14" Grid.Column="5"/>
+            <TextBox x:Name="txtSeconds" ToolTip="Seconds" MaxLength="2" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="00" VerticalAlignment="Center" Width="22" Grid.Column="6"/>
+            <Label x:Name="lblTimeDivider_Copy1" Content=":" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="27" Width="14" Grid.Column="7"/>
+            <TextBox x:Name="txtMilliseconds" ToolTip="Milliseconds" MaxLength="3" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="00" VerticalAlignment="Center" Width="53"  Grid.Column="8"/>
+        </Grid>
+
+        <TextBlock Name="Error" Foreground="Red"/>
+
+        <Grid Grid.Column="1" Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Start Fade MIDI: " Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <ComboBox x:Name="cmbStartCommands" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="190" Height="25" SelectionChanged="cmbStartCommands_SelectionChanged" Grid.Column="1">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+
+        <Grid Grid.Column="1" Name="StartDevice" Grid.Row="5" Height="30" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Start Device: " Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <ComboBox x:Name="startDeviceComboBox" HorizontalAlignment="Left" VerticalAlignment="Center" Width="190" Height="25" Grid.Column="1" Margin="0,0,-10,0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding deviceName}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        
+        <Grid Grid.Column="1" Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="End Fade MIDI: " Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <ComboBox x:Name="cmbEndCommands" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="190" Height="25" SelectionChanged="cmbEndCommands_SelectionChanged" Grid.Column="1">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="9" Name="EndDevice" Height="30" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="End Device: " Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <ComboBox x:Name="endDeviceComboBox" HorizontalAlignment="Left" VerticalAlignment="Center" Width="190" Height="25" Grid.Column="1" Margin="0,0,-10,0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding deviceName}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="11">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="76"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="76"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Cancel" IsCancel="True" Name="Cancel_Button" Grid.Column="0" Click="Cancel_Click"/>
+            <Button Content="Save" IsDefault="True" Name="Save_Button" Grid.Column="3" Click="Save_Click"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,579 @@
+﻿<Window x:Class="ShowAutomation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShowAutomation"
+        xmlns:svl="clr-namespace:WPFSoundVisualizationLib;assembly=WPFSoundVisualizationLib"
+        xmlns:Scenes="clr-namespace:ShowAutomation.Domain.Models.Scenes"
+        xmlns:Utils="clr-namespace:ShowAutomation.Domain.Utils"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        mc:Ignorable="d"
+        Name="Window"
+        WindowStartupLocation="CenterScreen"
+        Title="Show Automation" Height="800" Width="1000" Background="{DynamicResource Background}" Foreground="{DynamicResource Forground}"
+        Closing="MainWindow_Closing" MouseMove="ListItem_Dragged" MouseLeftButtonUp="ListItem_Release">
+
+    <!-- TIMELINE AND SCENE -->
+    <Window.Resources>
+
+        <ObjectDataProvider x:Key="Mode"
+            ObjectType="{x:Type Utils:Mode}"/>
+
+        <ObjectDataProvider x:Key="Colors"
+            ObjectType="{x:Type Utils:ColorManager}"/>
+
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+        <SolidColorBrush x:Key="Background" Color="White"/>
+        <!--White-->
+        <SolidColorBrush x:Key="Forground" Color="#EEEEEE"/>
+        <!--MidGray-->
+        <SolidColorBrush x:Key="Accent" Color="LightGray"/>
+        <!--LightGray-->
+        
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="bdr_main" BorderThickness="1" BorderBrush="{Binding Source={StaticResource Colors},Path=BUTTON_BORDER}" Background="{Binding Source={StaticResource Colors},Path=BUTTON}" TextBlock.Foreground="{Binding Source={StaticResource Colors},Path=TEXT_COLOR}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Content" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bdr_main" Property="Background" Value="{Binding Source={StaticResource Colors},Path=HIGHLIGHT}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bdr_main" Property="Background" Value="DarkGray"/>
+                                <Setter TargetName="bdr_main" Property="BorderBrush" Value="Black"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="bdr_main" Property="Background" Value="DarkGray"/>
+                                <Setter TargetName="bdr_main" Property="BorderBrush" Value="DimGray"/>
+                                <Setter TargetName="bdr_main" Property="TextBlock.Foreground" Value="Black"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Content" Value="PLAY"/>
+                                    <Condition Property="IsEnabled" Value="True"/>
+                                    <Condition Property="IsPressed" Value="False"/>
+                                    <Condition Property="IsMouseOver" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.Setters>
+                                    <Setter TargetName="bdr_main" Property="Background" Value="LightGreen"/>
+                                    <Setter TargetName="bdr_main" Property="BorderBrush" Value="{Binding Source={StaticResource Colors},Path=BUTTON_BORDER}"/>
+                                    <Setter TargetName="bdr_main" Property="TextBlock.Foreground" Value="Black"/>
+                                </MultiTrigger.Setters>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Content" Value="Resume"/>
+                                    <Condition Property="IsEnabled" Value="True"/>
+                                    <Condition Property="IsPressed" Value="False"/>
+                                    <Condition Property="IsMouseOver" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.Setters>
+                                    <Setter TargetName="bdr_main" Property="Background" Value="LightGreen"/>
+                                    <Setter TargetName="bdr_main" Property="BorderBrush" Value="{Binding Source={StaticResource Colors},Path=BUTTON_BORDER}"/>
+                                    <Setter TargetName="bdr_main" Property="TextBlock.Foreground" Value="Black"/>
+                                </MultiTrigger.Setters>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Content" Value="Pause"/>
+                                    <Condition Property="IsEnabled" Value="True"/>
+                                    <Condition Property="IsPressed" Value="False"/>
+                                    <Condition Property="IsMouseOver" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.Setters>
+                                    <Setter TargetName="bdr_main" Property="Background" Value="LightGreen"/>
+                                    <Setter TargetName="bdr_main" Property="BorderBrush" Value="{Binding Source={StaticResource Colors},Path=BUTTON_BORDER}"/>
+                                    <Setter TargetName="bdr_main" Property="TextBlock.Foreground" Value="Black"/>
+                                </MultiTrigger.Setters>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Content" Value="STOP"/>
+                                    <Condition Property="IsEnabled" Value="True"/>
+                                    <Condition Property="IsPressed" Value="False"/>
+                                    <Condition Property="IsMouseOver" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.Setters>
+                                    <Setter TargetName="bdr_main" Property="Background" Value="Red"/>
+                                    <Setter TargetName="bdr_main" Property="BorderBrush" Value="{Binding Source={StaticResource Colors},Path=BUTTON_BORDER}"/>
+                                    <Setter TargetName="bdr_main" Property="TextBlock.Foreground" Value="Black"/>
+                                </MultiTrigger.Setters>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ToggleButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border x:Name="toggle_main" BorderThickness="1" BorderBrush="{Binding Source={StaticResource Colors},Path=Forground}" Background="{Binding Source={StaticResource Colors},Path=Forground}" TextBlock.Foreground="Black">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Content" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="toggle_main" Property="Background" Value="{Binding Source={StaticResource Colors},Path=BACKGROUND}"/>
+                                <Setter TargetName="toggle_main" Property="TextBlock.FontWeight" Value="Bold"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="toggle_main" Property="Background" Value="DarkGray"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="toggle_main" Property="Background" Value="#99a9a9ff"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style TargetType="{x:Type ListViewItem}">
+            <Style.Triggers>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="{Binding Source={StaticResource Colors},Path=LIST_ITEM_1}"/>
+                    <!--'#19f39611'-->
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="{Binding Source={StaticResource Colors},Path=LIST_ITEM_2}"/>
+                    <!--'#19000000'-->
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="TextBlock.Foreground" Value="Black"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsReadOnly, RelativeSource={RelativeSource Self}}" Value="True">
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                    <Setter Property="Background" Value="Transparent" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <!-- CommandList -->
+        <DataTemplate x:Key="CommandListItem" DataType="x:Type local:CommandList">
+            <Grid Name="Grid" MouseLeftButtonDown="lvCommandList_Click" TextBlock.Foreground="{Binding listItemTextColor}" SizeChanged="CommandListResized" ToolTip="{Binding Path=name}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Play Command" Click="btnPlayCommandMenuClick" IsEnabled="{Binding Source={StaticResource Mode},Path=isEditMode}"/>
+                        <MenuItem Header="Edit Command" Click="btnEditCommandClick" IsEnabled="{Binding Source={StaticResource Mode},Path=isEditMode}"/>
+                        <Separator />
+                        <MenuItem Header="Remove Command" Click="btnRemoveCommandClick" IsEnabled="{Binding Source={StaticResource Mode},Path=isEditMode}"/>
+                    </ContextMenu>
+                </Grid.ContextMenu>
+                <TextBlock Grid.Column="0" HorizontalAlignment="Stretch" TextAlignment="Left" Text="{Binding Path=name}" TextWrapping="WrapWithOverflow"/>
+                <Button Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Click="btnPlayCommand" Height="25" Width="50">Play</Button>
+            </Grid>
+        </DataTemplate>
+        
+        <!-- SCENE -->
+        <DataTemplate x:Key="SceneListEventItem" DataType="x:Type local:Event">
+            <Grid Background="{Binding listItemColor}" TextBlock.Foreground="{Binding listItemTextColor}" MouseLeftButtonDown="lvEventList_Click">
+
+                <!-- EVENTS GRID -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" ContextMenuOpening="EventContextMenuCreation">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
+                        <!-- EVENT NAME -->
+                        <ColumnDefinition Width="180"></ColumnDefinition>
+                        <!-- DEVICE -->
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <!-- TYPE -->
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <!-- START TIME -->
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <!-- END TIME -->
+                    </Grid.ColumnDefinitions>
+                    <Grid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Edit Event" Click="btnEditEventClick" IsEnabled="{Binding Source={StaticResource Mode},Path=isEditMode}"/>
+                            <MenuItem Header="Group Events" InputGestureText="Ctrl-G" IsEnabled="False"/>
+                            <Separator />
+                            <MenuItem Header="Delete Event" Click="btnDeleteEventClick" IsEnabled="{Binding Source={StaticResource Mode},Path=isEditMode}"/>
+                        </ContextMenu>
+                    </Grid.ContextMenu>
+                    <TextBlock Grid.Column="0" TextWrapping="Wrap" Text="{Binding name}" TextTrimming="CharacterEllipsis"/>
+                    <TextBlock TextAlignment="Center" Grid.Column="1" TextWrapping="Wrap" Text="{Binding OutputDevice.deviceName}"/>
+                    <TextBlock TextAlignment="Center" Grid.Column="2" TextWrapping="Wrap" Text="{Binding type}"/>
+                    <TextBlock TextAlignment="Center" Grid.Column="3" TextWrapping="Wrap" Text="{Binding startTimeFormatted}"/>
+                    <TextBlock TextAlignment="Center" Grid.Column="4" TextWrapping="Wrap" Text="{Binding endTimeFormatted}"/>
+                    <!-- durationFormatted -->
+                </Grid>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="SceneListItem" DataType="x:Type local:Scene">
+            <Grid Background="{Binding listItemColor}" TextBlock.Foreground="{Binding listItemTextColor}" ContextMenuOpening="SceneContextMenuCreation">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <!-- SCENE NAME AND BUTTONS -->
+                    <RowDefinition Height="*"></RowDefinition>
+                    <!-- EVENT NAME, TYPE, ETC -->
+                    <RowDefinition Height="*"></RowDefinition>
+                    <!-- EVENT LIST -->
+                    <RowDefinition Height="2"></RowDefinition>
+                    <!-- BORDER -->
+                </Grid.RowDefinitions>
+                <Grid.ContextMenu>
+                    <ContextMenu/>
+                </Grid.ContextMenu>
+                <!-- SCENE NAME AND BUTTONS -->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="80"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <!-- Autoplay -->
+                    <CheckBox x:Name="checkBox" Grid.Column="0" ToolTip="Autoplay" IsChecked="{Binding autoPlay}"/>
+                    <TextBox Grid.Column="1" FontWeight="Bold" IsReadOnly="True" FontSize="15" Text="{Binding name}" HorizontalAlignment="Stretch" TextAlignment="Left" MouseDoubleClick="ChangeNameOfScene" KeyDown="FinishSceneNameChange" MouseLeave="FinishSceneNameChange"/>
+                    <Button Grid.Column="2" Click="btnPlaySceneClick">Play</Button>
+                    <Button Grid.Column="3" Click="btnCreateSceneEvent" Width="80" Visibility="{Binding Source={StaticResource Mode},Path=isEditMode, Converter={StaticResource BooleanToVisibilityConverter}}">Create Event</Button>
+                </Grid>
+
+                <!-- EVENT NAME, TYPE, ETC TITLES -->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6"></ColumnDefinition>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
+                        <ColumnDefinition Width="180"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="6"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Stretch" TextAlignment="Left">Event Name</TextBlock>
+                    <TextBlock Grid.Column="2" HorizontalAlignment="Stretch" TextAlignment="Center">Device Name</TextBlock>
+                    <TextBlock Grid.Column="3" HorizontalAlignment="Stretch" TextAlignment="Center">Event Type</TextBlock>
+                    <TextBlock Grid.Column="4" HorizontalAlignment="Stretch" TextAlignment="Center">Start Time (ms)</TextBlock>
+                    <TextBlock Grid.Column="5" HorizontalAlignment="Stretch" TextAlignment="Center">End Time (ms)</TextBlock>
+                </Grid>
+
+                <!-- EVENT LIST -->
+                <Grid Grid.Row="2">
+                    <ListView ItemsSource="{Binding Events}" Background="Transparent"  BorderBrush="Transparent" ItemTemplate="{StaticResource SceneListEventItem}" HorizontalContentAlignment="Stretch"  PreviewMouseLeftButtonUp="EventSelected" PreviewMouseRightButtonUp="EventSelected"/>
+                </Grid>
+
+                <Grid Grid.Row="3" Background="Black"/>
+
+            </Grid>
+        </DataTemplate>
+
+        <!-- TIMELINE -->
+        <DataTemplate x:Key="OutputListItem" DataType="x:Type local:OutputList">
+            <Border Margin="0.5">
+                <Grid MaxHeight="50" TextBlock.Foreground="{Binding Path=listItemTextColor}" SizeChanged="OutputKeyResized" ToolTip="{Binding Path=deviceName}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row= "0" Grid.Column="0" Text="{Binding Path=displayType}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextTrimming="CharacterEllipsis"/>
+                    <TextBlock Grid.Row= "1" Grid.Column="0" Text="{Binding Path=deviceName}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextTrimming="CharacterEllipsis"/>
+                    <Grid Grid.Column="1" Grid.RowSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="1" Content="{Binding Path=MuteLabel}" Click="DeviceMute" ToolTipService.ToolTip="Mute this output device"/>
+                        <Button Grid.Row="3" Content="{Binding Path=SoloLabel}" Click="DeviceSolo" ToolTipService.ToolTip="Mute other output devices of the same type"/>
+                    </Grid>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </Window.Resources>
+
+    <!-- MAIN WINDOW -->
+    <Grid Name="Content">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="329*"/>
+                    <ColumnDefinition Width="666*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!-- MENU BAR -->
+                <Menu IsMainMenu="True" Grid.Row="0" Grid.ColumnSpan="2">
+                    <MenuItem Header="_File">
+                        <MenuItem Header="_New" InputGestureText="Ctrl+N" Click="btnNewShowClick"/>
+                        <MenuItem Header="_Open" InputGestureText="Ctrl+O" Click="btnOpenClick"/>
+                        <MenuItem Header="_Save" InputGestureText="Ctrl+S" Click="btnSaveProject_Click"/>
+                        <MenuItem Header="Save As" Click="btnSaveAsClick"/>
+                        <Separator/>
+                        <MenuItem Header="Exit" InputGestureText="Ctrl+Q" Click="MenuItem_Exit"/>
+                    </MenuItem>
+                    <MenuItem Header="Edit" FlowDirection="LeftToRight">
+                        <MenuItem Name="UndoButton" Header="Undo" InputGestureText="Ctrl+Z" Click="UndoClick" IsEnabled="False"/>
+                        <MenuItem Name="RedoButton" Header="Redo" InputGestureText="Ctrl+Y" Click="RedoClick" IsEnabled="False"/>
+                        <Separator/>
+                        <MenuItem Header="Add _Ghost Output" InputGestureText="Ctrl+L" Click="AddGhostItemClick" IsEnabled="{Binding Source={StaticResource Mode},Path=isEditMode}"/>
+                        <MenuItem Header="_Output Settings" Click="BtnDeviceLanes" IsEnabled="{Binding Source={StaticResource Mode},Path=isEditMode}"/>
+                        <Separator/>
+                        <MenuItem Header="New _Command" Click="btnCreate_Click" IsEnabled="{Binding Source={StaticResource Mode},Path=isEditMode}"/>
+                        <MenuItem Header="New _Event" InputGestureText="Ctrl+E" Click="btnCreateEvent_Click" IsEnabled="{Binding Source={StaticResource Mode},Path=isEditMode}"/>
+                        <MenuItem Header="New _Scene" Click="btnCreateScene_Click" IsEnabled="{Binding Source={StaticResource Mode},Path=isEditMode}"/>
+                        <Separator/>
+                        <MenuItem Header="Scene Fade Settings" Click="btnSceneFadeSettings_Click"/>
+                        <MenuItem Header="Preview Device Settings" Click="btnPreviewSettings_Click"/>
+                        <Separator/>
+                        <MenuItem Header="Un_group All Events" Click="UngroupEvents_Event" IsEnabled="{Binding Source={StaticResource Mode},Path=isEditMode}"/>
+                    </MenuItem>
+                    <MenuItem Header="View" FlowDirection="LeftToRight">
+                        <MenuItem Name="SwitchModeButton" Header="Switch to Performance _Mode" InputGestureText="Ctrl+M" Click="btnSwitchModeClick"/>
+                        <MenuItem Name="TimelineViewButton" Header="Switch to Show _View" Click="btnSwitchTimelineView"/>
+                        <MenuItem Name ="waveformSwitcher" Header="Switch _Waveform to Wave (Slower)" Click="btnSwitchWaveformType" ToolTipService.ToolTip="Switch between waveform display types"/>
+                    </MenuItem>
+                    <MenuItem Header="Help" FlowDirection="LeftToRight">
+                        <Grid>
+                            <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+                            <TextBox Name="SearchBox" Grid.Column="0" HorizontalAlignment="Stretch" MinWidth="100" TextChanged="SearchBox_Resize" Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Button Grid.Column="1" HorizontalAlignment="Right" Width="40" IsDefault="True" Click="btnSearchClick">Search</Button>
+                        </Grid>
+                        <MenuItem Name="HelpButton" Header="Open Help Guide" InputGestureText="Ctrl+H" Click="btnHelp"/>
+                    </MenuItem>
+                </Menu>
+
+                <!-- PLAY/STOP AND CREATE COMMAND BUTTONS -->
+                <Grid Grid.Row="1" Background="{DynamicResource Accent}" Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="125"/>
+                            <!-- CREATE COMMAND -->
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="110"/>
+                            <!--PLAY -->
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="5"/>
+
+                            <ColumnDefinition Width="110" />
+                            <!-- STOP -->
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="125"/>
+                            <!-- CREATE SCENE -->
+                        </Grid.ColumnDefinitions>
+
+                        <Button x:Name="btnCreate" Click="btnCreate_Click" Content="Create Command" ToolTipService.ToolTip="Create an Audio, MIDI, or Video Command" Visibility="{Binding Source={StaticResource Mode},Path=isEditMode, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                        <Button x:Name="btnPlay" Click="btnPlay_Click" Content="PLAY" Grid.Column="2" Background="LightGreen"/>
+                        <Button x:Name="btnFade" Click="btnFade_Click" Content="FADE" ToolTip="Fade Scene Out" Grid.Column="4" Width="110" IsEnabled="False"/>
+                        <Button x:Name="btnStop" Click="btnStop_Click" Content="STOP" Grid.Column="6" Background="Red"/>
+                        <Button x:Name="btnScene" Click="btnCreateScene_Click" Content="Create Scene" Grid.Column="8" ToolTipService.ToolTip="Create a new Scene" Visibility="{Binding Source={StaticResource Mode},Path=isEditMode, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!-- PANEL WINDOWS -->
+        <Grid Background ="{DynamicResource Background}" Margin="0,60,0,0">
+
+            <!-- LIST/SCENE AND TIMELINE -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="3*" />
+            </Grid.RowDefinitions>
+
+            <!-- LIST/SCENE-->
+            <Grid SizeChanged="setMaxCommandListWidth">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Name="CommandListCol" Width="250" MinWidth="0" MaxWidth="450"/>
+                    <!--Command List-->
+                    <ColumnDefinition Width="Auto"/>
+                    <!--Splitter-->
+                    <ColumnDefinition Width="*" />
+                    <!--Scene List-->
+                    <ColumnDefinition Width="Auto" />
+                    <!--Splitter-->
+                    <ColumnDefinition Name="VideoViewerCol" Width="0" MinWidth="0"/>
+                    <!--Video Panel-->
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Background="{DynamicResource Forground}" Orientation="Vertical" Margin="0,0,2,-4.5">
+                    <ToggleButton Content="Command List" Margin="18,0,-126,0" Height="18" Click="ShowCommandList_Click" IsChecked="True" ToolTipService.ToolTip="Hide/Show Command List">
+                        <ToggleButton.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90"/>
+                            </TransformGroup>
+                        </ToggleButton.RenderTransform>
+                    </ToggleButton>
+                </StackPanel>
+
+                <!-- LIST(LEFT) -->
+                <Grid Grid.Column="1" Name="CommandList">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+
+                    <!-- COMMANDS -->
+
+                    <ListView x:Name="lvCommandList" Background="{DynamicResource Background}" BorderBrush="{DynamicResource Background}"
+                        ItemsSource="{Binding Commands}" AlternationCount="2" ItemTemplate="{StaticResource CommandListItem}" Grid.Row="0"
+                              HorizontalContentAlignment="Stretch"/>
+                    <!-- FILTER -->
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <ComboBox x:Name="CommandListFilterComboBox" SelectedIndex="0" Grid.Column="0" SelectionChanged="CommandListFilterComboBox_SelectionChanged" HorizontalAlignment="Stretch" ToolTipService.ToolTip="Show only certain types of Commands">
+                            <ComboBoxItem Content="All"/>
+                            <ComboBoxItem Content="Audio"/>
+                            <ComboBoxItem Content="Video"/>
+                            <ComboBoxItem Content="MIDI"/>
+                        </ComboBox>
+                    </Grid>
+                </Grid>
+
+                <!-- LIST/VIDEO DIVIDER -->
+                <GridSplitter Name="ListSplitter" Background ="{DynamicResource Forground}" Grid.Column="2" Width="5" Margin="2,0,2,-4.5" HorizontalAlignment="Stretch" />
+
+                <!-- SCENE(RIGHT) -->
+
+                <Grid Grid.Column="3" HorizontalAlignment="Stretch">
+                    <ListView x:Name="lvSceneList" Background="{DynamicResource Background}" BorderBrush="{DynamicResource Background}" AlternationCount="2" ItemsSource="{Binding Scenes}" ScrollViewer.CanContentScroll="False" ItemTemplate="{StaticResource SceneListItem}" HorizontalContentAlignment="Stretch" Margin="0,0,0.2,-0.2"/>
+
+
+                </Grid>
+
+
+                <!-- VIDEO/SCENE DIVIDER -->
+                <GridSplitter Name="VideoSplitter" Background ="{DynamicResource Forground}" Grid.Column="4" Width="5" Margin="3,0,3,-4.5" HorizontalAlignment="Stretch" Visibility="Collapsed"/>
+
+                <!-- VIDEO PANEL -->
+                <Grid Name="VideoViewer" Grid.Column="5" Background ="Black" HorizontalAlignment="Stretch" Visibility="Collapsed" SizeChanged="setMaxCommandListWidth">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+                    <WrapPanel Name="MonitorTabs" Orientation="Horizontal" Background ="{DynamicResource Background}"/>
+                    <MediaElement x:Name="VideoPlayer" Grid.Row="1" x:FieldModifier="public" LoadedBehavior="Manual" RenderTransformOrigin="0.497,0.502" HorizontalAlignment="Stretch" Margin="-2,0,0,-2.5"/>
+                    <CheckBox Grid.Row="2" Content="Mute" Checked="mutePreview" Unchecked="mutePreview" TextBlock.Foreground="White" IsChecked="True"/>
+                </Grid>
+
+                <StackPanel Grid.Column="6" Background="{DynamicResource Forground}" Orientation="Vertical" Margin="0,0,0,-4.5">
+                    <ToggleButton Name="HideVideoViewer" Content="Video Viewer" Margin="20,0,-128,0" Height="20" Click="ShowVideo_Click" ToolTipService.ToolTip="Hide/Show the Video Viewer">
+                        <ToggleButton.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90"/>
+                            </TransformGroup>
+                        </ToggleButton.RenderTransform>
+                    </ToggleButton>
+                </StackPanel>
+            </Grid>
+
+            <!-- TIMELINE(BOTTOM) -->
+            <GridSplitter Background ="{DynamicResource Forground}" Grid.Row="1" Height="5" HorizontalAlignment="Stretch" />
+            <Grid Grid.Row="2">
+
+                <StackPanel Panel.ZIndex="1000" />
+
+                <Grid Name="TimelinePanel">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="20" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Name="TimelineKeyArea" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" SizeChanged="OutputKeyResized"/>
+                        <GridSplitter Background ="{DynamicResource Forground}" Grid.Column="1" Width="1" HorizontalAlignment="Stretch" Margin="0,0,0,-2" />
+                        <ScrollViewer Name="TimelineKey" Grid.Column="2" HorizontalScrollBarVisibility="Hidden"  VerticalScrollBarVisibility="Disabled" MouseWheel="Timeline_ScrollChanged">
+                            <Grid Name="KeyArea">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Name="KeyGrid" Grid.Row="1" HorizontalAlignment="Stretch" Height="23"/>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                    <ScrollViewer Name="TimelineArea" Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" MouseWheel="Timeline_ScrollChanged" SizeChanged="TimelineArea_SizeChanged" ScrollChanged="ScrollViewer_ScrollChanged">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="2" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Name="OutputKeyArea" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="20"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" HorizontalAlignment="Stretch">
+                                    <ListView x:Name="lvOutputList" Background="{DynamicResource Background}" BorderBrush="{DynamicResource Background}" AlternationCount="2" ItemTemplate="{StaticResource OutputListItem}" PreviewMouseLeftButtonUp="OutputList_Click" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ContextMenuOpening="OutputContextMenuCreation">
+                                        <ListView.ContextMenu>
+                                            <ContextMenu DataContext="lvOutputList">
+                                                <MenuItem Name="deviceSettings" Header="Devices Settings" Click="BtnOutputSettings" IsEnabled="{Binding Source={StaticResource Mode},Path=isEditMode}"/>
+                                            </ContextMenu>
+                                        </ListView.ContextMenu>
+                                    </ListView>
+                                </Grid>
+                            </Grid>
+                            <GridSplitter Background ="{DynamicResource Forground}" Grid.Column="1" Width="1" HorizontalAlignment="Stretch" Margin="0,0,0,-2" />
+                            <ScrollViewer Name="Timeline" Grid.Column="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" MouseWheel="Timeline_ScrollChanged" ScrollChanged="Timeline_Scrolled">
+                                <Grid Name="LaneArea">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Name="LaneGrid" Grid.Row="1" HorizontalAlignment="Stretch"/>
+                                </Grid>
+                            </ScrollViewer>
+                        </Grid>
+                    </ScrollViewer>
+                    <Separator Background ="{DynamicResource Forground}" Grid.Row="3"/>
+                    <Grid Grid.Row="4" Name="TimelineInfo">
+
+                    </Grid>
+
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>

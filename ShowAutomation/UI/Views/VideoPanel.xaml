@@ -1,0 +1,35 @@
+﻿<Window x:Class="ShowAutomation.UI.Views.VideoPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShowAutomation.UI.Views"
+        mc:Ignorable="d"
+        WindowStyle="None"   
+        WindowStartupLocation="Manual"
+        Name="Panel" Title="VideoPanel" Height="300" Width="400" Background="Black">
+
+
+    <Window.Resources>
+        <RoutedUICommand x:Key="stop" Text="Text" />
+        <RoutedUICommand x:Key="close" Text="Another Text" />
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource stop}" Executed="stop" />
+        <CommandBinding Command="{StaticResource close}" Executed="close" />
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding Key="s" Command="{StaticResource stop}" />
+        <KeyBinding Key="c" Command="{StaticResource close}" />
+    </Window.InputBindings>
+    <Grid Name="MainGrid" Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <MediaElement x:Name="MediaPlayer" MediaOpened="Opened" 
+                          x:FieldModifier="public" 
+                          LoadedBehavior="Manual"  Margin="3,3,0,3" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
